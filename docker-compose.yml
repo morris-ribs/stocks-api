@@ -1,0 +1,14 @@
+ drinks:
+    build: .
+    ports:
+      - "9000:9000"
+    links:
+      - db
+    command: go run main.go
+ db:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./data/db:/data/db    
+    command: mongod
